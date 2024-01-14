@@ -1,6 +1,8 @@
 package com.qomunal.opensource.androidresearch.ui.detail
 
 import com.qomunal.opensource.androidresearch.common.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 /**
  * Created by faisalamircs on 13/01/2024
@@ -11,7 +13,7 @@ import com.qomunal.opensource.androidresearch.common.base.BaseViewModel
  * -----------------------------------------
  */
 
-
-class DetailViewModel : BaseViewModel() {
+@HiltViewModel
+class DetailViewModel @Inject constructor() : BaseViewModel() {
 
 }
