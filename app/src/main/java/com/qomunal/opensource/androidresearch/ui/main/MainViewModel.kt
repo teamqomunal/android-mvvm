@@ -8,6 +8,7 @@ import com.qomunal.opensource.androidresearch.domain.Resource
 import com.qomunal.opensource.androidresearch.domain.meal.usecase.MealUseCase
 import com.qomunal.opensource.androidresearch.domain.news.usecase.NewsUseCase
 import com.qomunal.opensource.androidresearch.model.ArticleModel
+import com.qomunal.opensource.androidresearch.model.MealModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -32,11 +33,23 @@ class MainViewModel @Inject constructor(
     private var _newsArticlesState = MutableLiveData<Resource<List<ArticleModel>>>()
     var newsArticlesState: LiveData<Resource<List<ArticleModel>>> = _newsArticlesState
 
+    private var _mealState = MutableLiveData<Resource<List<MealModel>>>()
+    var mealState: LiveData<Resource<List<MealModel>>> = _mealState
+
     fun getNewsArticle() {
         viewModelScope.launch {
             newsUseCase.getTopHeadline("")
                 .onEach {
                     _newsArticlesState.postValue(it)
+                }.launchIn(viewModelScope)
+        }
+    }
+
+    fun getMeals() {
+        viewModelScope.launch {
+            mealUseCase.listAllMeal("C")
+                .onEach {
+                    _mealState.postValue(it)
                 }.launchIn(viewModelScope)
         }
     }

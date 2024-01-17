@@ -24,12 +24,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
             viewModel.getNewsArticle()
+            viewModel.getMeals()
         }
     }
 
     override fun initUI() {
         binding.apply {
-            
+
         }
     }
 
@@ -40,12 +41,42 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     is Resource.Error -> {
                         Log.d("MainActivity", "Error")
                     }
+
                     is Resource.Loading -> {
                         Log.d("MainActivity", "Loading")
                     }
+
                     is Resource.Success -> {
                         Log.d("MainActivity", "Success")
                         Log.d("MainActivity", it.data.toString())
+                    }
+                }
+            }
+
+            mealState.observe(this@MainActivity) {
+                when (it) {
+                    is Resource.Error -> {
+                        Log.d("MainActivity", "Error")
+                    }
+
+                    is Resource.Loading -> {
+                        Log.d("MainActivity", "Loading")
+                    }
+
+                    is Resource.Success -> {
+                        Log.d("MainActivity", "Success")
+                        Log.d("MainActivity", it.data.toString())
+
+                        it.data?.forEach { meal ->
+
+                            Log.d("Meal Name", meal.strMeal)
+
+                            meal.strIngredient.forEach { ingredient ->
+                                Log.d("Meal Ingredient", ingredient)
+                            }
+
+                            Log.d("Meal Space", "------------------------------")
+                        }
                     }
                 }
             }

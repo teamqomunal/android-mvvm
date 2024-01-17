@@ -23,6 +23,50 @@ object MealMapper {
 
     object Meal {
         fun mapResponseToDomain(input: MealResponse): MealModel {
+            val ingredients = mutableListOf<String>()
+            ingredients.add(input.strIngredient1 ?: "")
+            ingredients.add(input.strIngredient2 ?: "")
+            ingredients.add(input.strIngredient3 ?: "")
+            ingredients.add(input.strIngredient4 ?: "")
+            ingredients.add(input.strIngredient5 ?: "")
+            ingredients.add(input.strIngredient6 ?: "")
+            ingredients.add(input.strIngredient7 ?: "")
+            ingredients.add(input.strIngredient8 ?: "")
+            ingredients.add(input.strIngredient9 ?: "")
+            ingredients.add(input.strIngredient10 ?: "")
+            ingredients.add(input.strIngredient11 ?: "")
+            ingredients.add(input.strIngredient12 ?: "")
+            ingredients.add(input.strIngredient13 ?: "")
+            ingredients.add(input.strIngredient14 ?: "")
+            ingredients.add(input.strIngredient15 ?: "")
+            ingredients.add(input.strIngredient16 ?: "")
+            ingredients.add(input.strIngredient17 ?: "")
+            ingredients.add(input.strIngredient18 ?: "")
+            ingredients.add(input.strIngredient19 ?: "")
+            ingredients.add(input.strIngredient20 ?: "")
+
+            val measurements = mutableListOf<String>()
+            measurements.add(input.strMeasure1 ?: "")
+            measurements.add(input.strMeasure2 ?: "")
+            measurements.add(input.strMeasure3 ?: "")
+            measurements.add(input.strMeasure4 ?: "")
+            measurements.add(input.strMeasure5 ?: "")
+            measurements.add(input.strMeasure6 ?: "")
+            measurements.add(input.strMeasure7 ?: "")
+            measurements.add(input.strMeasure8 ?: "")
+            measurements.add(input.strMeasure9 ?: "")
+            measurements.add(input.strMeasure10 ?: "")
+            measurements.add(input.strMeasure11 ?: "")
+            measurements.add(input.strMeasure12 ?: "")
+            measurements.add(input.strMeasure13 ?: "")
+            measurements.add(input.strMeasure14 ?: "")
+            measurements.add(input.strMeasure15 ?: "")
+            measurements.add(input.strMeasure16 ?: "")
+            measurements.add(input.strMeasure17 ?: "")
+            measurements.add(input.strMeasure18 ?: "")
+            measurements.add(input.strMeasure19 ?: "")
+            measurements.add(input.strMeasure20 ?: "")
+
             return MealModel(
                 idMeal = input.idMeal ?: "",
                 strMeal = input.strMeal ?: "",
@@ -33,46 +77,8 @@ object MealMapper {
                 strMealThumb = input.strMealThumb ?: "",
                 strTags = input.strTags ?: "",
                 strYoutube = input.strYoutube ?: "",
-                strIngredient1 = input.strIngredient1 ?: "",
-                strIngredient2 = input.strIngredient2 ?: "",
-                strIngredient3 = input.strIngredient3 ?: "",
-                strIngredient4 = input.strIngredient4 ?: "",
-                strIngredient5 = input.strIngredient5 ?: "",
-                strIngredient6 = input.strIngredient6 ?: "",
-                strIngredient7 = input.strIngredient7 ?: "",
-                strIngredient8 = input.strIngredient8 ?: "",
-                strIngredient9 = input.strIngredient9 ?: "",
-                strIngredient10 = input.strIngredient10 ?: "",
-                strIngredient11 = input.strIngredient11 ?: "",
-                strIngredient12 = input.strIngredient12 ?: "",
-                strIngredient13 = input.strIngredient13 ?: "",
-                strIngredient14 = input.strIngredient14 ?: "",
-                strIngredient15 = input.strIngredient15 ?: "",
-                strIngredient16 = input.strIngredient16 ?: "",
-                strIngredient17 = input.strIngredient17 ?: "",
-                strIngredient18 = input.strIngredient18 ?: "",
-                strIngredient19 = input.strIngredient19 ?: "",
-                strIngredient20 = input.strIngredient20 ?: "",
-                strMeasure1 = input.strMeasure1 ?: "",
-                strMeasure2 = input.strMeasure2 ?: "",
-                strMeasure3 = input.strMeasure3 ?: "",
-                strMeasure4 = input.strMeasure4 ?: "",
-                strMeasure5 = input.strMeasure5 ?: "",
-                strMeasure6 = input.strMeasure6 ?: "",
-                strMeasure7 = input.strMeasure7 ?: "",
-                strMeasure8 = input.strMeasure8 ?: "",
-                strMeasure9 = input.strMeasure9 ?: "",
-                strMeasure10 = input.strMeasure10 ?: "",
-                strMeasure11 = input.strMeasure11 ?: "",
-                strMeasure12 = input.strMeasure12 ?: "",
-                strMeasure13 = input.strMeasure13 ?: "",
-                strMeasure14 = input.strMeasure14 ?: "",
-                strMeasure15 = input.strMeasure15 ?: "",
-                strMeasure16 = input.strMeasure16 ?: "",
-                strMeasure17 = input.strMeasure17 ?: "",
-                strMeasure18 = input.strMeasure18 ?: "",
-                strMeasure19 = input.strMeasure19 ?: "",
-                strMeasure20 = input.strMeasure20 ?: "",
+                strIngredient = ingredients.filter { it != "" },
+                strMeasure = measurements.filter { it != "" },
                 strSource = input.strSource ?: "",
                 dateModified = input.dateModified ?: ""
             )
