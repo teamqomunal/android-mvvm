@@ -8,8 +8,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-
-import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
@@ -32,16 +30,13 @@ class NetworkModule {
     @Provides
     fun provideOkHTTPClient(
         loggingInterceptor: HttpLoggingInterceptor,
-        cache: Cache,
         @ApplicationContext context: Context
     ): OkHttpClient.Builder {
 
         // Create the Interceptor
-        val chuckerInterceptor = ChuckerInterceptor.Builder(context)
-            .build()
+        val chuckerInterceptor = ChuckerInterceptor.Builder(context).build()
 
         return OkHttpClient.Builder()
-            .cache(cache)
             .connectTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)

@@ -1,4 +1,4 @@
-package com.qomunal.opensource.androidresearch.domain.meal
+package com.qomunal.opensource.androidresearch.domain.meal.util
 
 /*
  * Created by faisalamir on 27/07/21

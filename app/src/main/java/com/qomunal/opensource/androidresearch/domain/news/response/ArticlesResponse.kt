@@ -1,5 +1,6 @@
 package com.qomunal.opensource.androidresearch.domain.news.response
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -19,6 +20,8 @@ import com.google.gson.annotations.SerializedName
  * com.frogobox.frogoconsumeapi.news.data.response
  *
  */
+
+@Keep
 data class ArticlesResponse(
 
     @SerializedName("status")

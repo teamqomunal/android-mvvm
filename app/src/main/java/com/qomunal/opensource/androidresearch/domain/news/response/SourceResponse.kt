@@ -1,5 +1,6 @@
 package com.qomunal.opensource.androidresearch.domain.news.response
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -13,6 +14,8 @@ import com.google.gson.annotations.SerializedName
  * FrogoBox Software Industries
  *
  */
+
+@Keep
 data class SourceResponse(
 
     @SerializedName("id")

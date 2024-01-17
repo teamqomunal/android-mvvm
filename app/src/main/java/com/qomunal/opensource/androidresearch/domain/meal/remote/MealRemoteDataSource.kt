@@ -1,9 +1,7 @@
-package com.qomunal.opensource.androidresearch.model
-
-import androidx.annotation.Keep
+package com.qomunal.opensource.androidresearch.domain.meal.remote
 
 /**
- * Created by faisalamircs on 13/01/2024
+ * Created by faisalamircs on 14/01/2024
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
@@ -12,7 +10,5 @@ import androidx.annotation.Keep
  */
 
 
-@Keep
-data class MainModel(
-    val tag: String
-)
+class MealRemoteDataSource {
+}

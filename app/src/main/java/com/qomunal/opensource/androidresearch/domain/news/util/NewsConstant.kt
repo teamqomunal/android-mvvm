@@ -1,4 +1,4 @@
-package com.qomunal.opensource.androidresearch.domain.news
+package com.qomunal.opensource.androidresearch.domain.news.util
 
 /**
  * Created by Faisal Amir

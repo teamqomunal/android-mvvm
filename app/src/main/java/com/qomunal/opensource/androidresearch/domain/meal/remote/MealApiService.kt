@@ -1,8 +1,10 @@
-package com.qomunal.opensource.androidresearch.domain.meal
+package com.qomunal.opensource.androidresearch.domain.meal.remote
 
 
 import com.google.gson.GsonBuilder
 import com.qomunal.opensource.androidresearch.domain.meal.response.*
+import com.qomunal.opensource.androidresearch.domain.meal.util.MealConstant
+import com.qomunal.opensource.androidresearch.domain.meal.util.MealUrl
 import okhttp3.OkHttpClient
 import retrofit2.Converter
 import retrofit2.Response

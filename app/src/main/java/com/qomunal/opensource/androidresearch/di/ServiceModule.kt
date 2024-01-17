@@ -1,7 +1,6 @@
 package com.qomunal.opensource.androidresearch.di
 
-import com.qomunal.opensource.androidresearch.domain.meal.MealApiService
-import com.qomunal.opensource.androidresearch.domain.news.NewsApiService
+import com.qomunal.opensource.androidresearch.domain.news.remote.NewsApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,16 +26,15 @@ class ServiceModule {
         httpClient: OkHttpClient.Builder,
         converterFactory: Converter.Factory
     ): NewsApiService {
-        return NewsApiService.Creator().createApi(httpClient, converterFactory)
+        return NewsApiService.Creator(httpClient, converterFactory).createApi()
     }
 
-    @Provides
-    fun provideMealApiService(
-        httpClient: OkHttpClient.Builder,
-        converterFactory: Converter.Factory
-    ): MealApiService {
-        return MealApiService.Creator().createApi(httpClient, converterFactory)
-    }
-
+//    @Provides
+//    fun provideMealApiService(
+//        httpClient: OkHttpClient.Builder,
+//        converterFactory: Converter.Factory
+//    ): MealApiService {
+//        return MealApiService.Creator().createApi(httpClient, converterFactory)
+//    }
 
 }
