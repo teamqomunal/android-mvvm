@@ -83,11 +83,13 @@ interface NewsApiService {
         @Query(QUERY_CATEGORY) category: String
     ): SourcesResponse
 
-    class Creator @Inject constructor(
-        private val httpClient: OkHttpClient.Builder,
-        private val converterFactory: Converter.Factory
-    ) {
-        fun createApi(): NewsApiService {
+    class Creator {
+
+        @Inject
+        fun createApi(
+            httpClient: OkHttpClient.Builder,
+            converterFactory: Converter.Factory
+        ): NewsApiService {
             val retrofit = Retrofit.Builder().baseUrl(NewsUrl.BASE_URL)
                 .addConverterFactory(converterFactory)
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))

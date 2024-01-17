@@ -1,5 +1,7 @@
 package com.qomunal.opensource.androidresearch.di
 
+import com.qomunal.opensource.androidresearch.domain.meal.repository.MealRepository
+import com.qomunal.opensource.androidresearch.domain.meal.repository.MealRepositoryImpl
 import com.qomunal.opensource.androidresearch.domain.news.repository.NewsRepository
 import com.qomunal.opensource.androidresearch.domain.news.repository.NewsRepositoryImpl
 import dagger.Binds
@@ -23,5 +25,9 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun provideNewsRepository(repository: NewsRepositoryImpl): NewsRepository
+
+    @Binds
+    abstract fun provideMealRepository(repository: MealRepositoryImpl): MealRepository
+
 
 }

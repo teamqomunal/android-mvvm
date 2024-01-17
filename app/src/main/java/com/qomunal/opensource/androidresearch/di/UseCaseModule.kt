@@ -1,5 +1,7 @@
 package com.qomunal.opensource.androidresearch.di
 
+import com.qomunal.opensource.androidresearch.domain.meal.usecase.MealUseCase
+import com.qomunal.opensource.androidresearch.domain.meal.usecase.MealUseCaseImpl
 import com.qomunal.opensource.androidresearch.domain.news.usecase.NewsUseCase
 import com.qomunal.opensource.androidresearch.domain.news.usecase.NewsUseCaseImpl
 import dagger.Binds
@@ -25,5 +27,9 @@ abstract class UseCaseModule {
     @Binds
     @ViewModelScoped
     abstract fun provideNewsUseCase(useCase: NewsUseCaseImpl): NewsUseCase
+
+    @Binds
+    @ViewModelScoped
+    abstract fun provideMealUseCase(useCase: MealUseCaseImpl): MealUseCase
 
 }

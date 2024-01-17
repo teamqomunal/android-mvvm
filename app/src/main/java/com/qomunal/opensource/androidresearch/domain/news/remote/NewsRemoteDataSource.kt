@@ -28,6 +28,7 @@ class NewsRemoteDataSource @Inject constructor(
     private val apiService: NewsApiService
 ) {
 
+    private val apiKey = NewsUrl.API_KEY
 
     // Get Top Headline
     suspend fun getTopHeadline(
@@ -42,7 +43,7 @@ class NewsRemoteDataSource @Inject constructor(
             emit(Resource.Loading())
             try {
                 val request = apiService.getTopHeadline(
-                    NewsUrl.API_KEY,
+                    apiKey,
                     q,
                     sources,
                     category,
@@ -79,7 +80,7 @@ class NewsRemoteDataSource @Inject constructor(
             emit(Resource.Loading())
             try {
                 val request = apiService.getEverythings(
-                    NewsUrl.API_KEY,
+                    apiKey,
                     q,
                     from,
                     to,
@@ -112,7 +113,7 @@ class NewsRemoteDataSource @Inject constructor(
             emit(Resource.Loading())
             try {
                 val request = apiService.getSources(
-                    NewsUrl.API_KEY,
+                    apiKey,
                     language, country, category
                 )
                 emit(Resource.Success(request))

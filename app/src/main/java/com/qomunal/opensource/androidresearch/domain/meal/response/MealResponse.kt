@@ -1,5 +1,6 @@
 package com.qomunal.opensource.androidresearch.domain.meal.response
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -19,6 +20,8 @@ import com.google.gson.annotations.SerializedName
  * com.frogobox.frogomealsapi.data.model
  *
  */
+
+@Keep
 data class MealResponse(
 
     @SerializedName("idMeal")

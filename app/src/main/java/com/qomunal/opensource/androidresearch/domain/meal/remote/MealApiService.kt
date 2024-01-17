@@ -39,73 +39,73 @@ interface MealApiService {
     suspend fun searchMeal(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_NAME) nameMeal: String
-    ): Response<MealsResponse<MealResponse>>
+    ): MealsResponse<MealResponse>
 
     // List all meals by first letter
     @GET(MealUrl.URL_SEARCH_MEAL)
     suspend fun listAllMeal(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_FIRST_LETTER) firstLetter: String
-    ): Response<MealsResponse<MealResponse>>
+    ): MealsResponse<MealResponse>
 
     // Lookup full meal details by id
     @GET(MealUrl.URL_LOOKUP_MEAL)
     suspend fun lookupFullMeal(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_ID) idMeal: String
-    ): Response<MealsResponse<MealResponse>>
+    ): MealsResponse<MealResponse>
 
     // Lookup a single random meal
     @GET(MealUrl.URL_RANDOM_MEAL)
     suspend fun lookupRandomMeal(
         @Path(MealConstant.PATH_API_KEY) apiKey: String
-    ): Response<MealsResponse<MealResponse>>
+    ): MealsResponse<MealResponse>
 
     // List all meal categories
     @GET(MealUrl.URL_CATEGORIES)
     suspend fun listMealCategories(
         @Path(MealConstant.PATH_API_KEY) apiKey: String
-    ): Response<CategoriesResponse>
+    ): CategoriesResponse
 
     // List all Categories
     @GET(MealUrl.URL_LIST)
-    suspend fun listAllCateories(
+    suspend fun listAllCategories(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_CATEGORY) query: String
-    ): Response<MealsResponse<CategoryResponse>>
+    ): MealsResponse<CategoryResponse>
 
     // List all Area
     @GET(MealUrl.URL_LIST)
     suspend fun listAllArea(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_AREA) query: String
-    ): Response<MealsResponse<AreaResponse>>
+    ): MealsResponse<AreaResponse>
 
     // List all Ingredients
     @GET(MealUrl.URL_LIST)
     suspend fun listAllIngredients(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_INGREDIENT) query: String
-    ): Response<MealsResponse<IngredientResponse>>
+    ): MealsResponse<IngredientResponse>
 
     // Filter by main ingredient
     @GET(MealUrl.URL_FILTER)
     suspend fun filterByIngredient(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_INGREDIENT) ingredient: String
-    ): Response<MealsResponse<MealFilterResponse>>
+    ): MealsResponse<MealResponse>
 
     // Filter by Category
     suspend fun filterByCategory(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_CATEGORY) category: String
-    ): Response<MealsResponse<MealFilterResponse>>
+    ): MealsResponse<MealResponse>
 
     // Filter by Area
     suspend fun filterByArea(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_AREA) area: String
-    ): Response<MealsResponse<MealFilterResponse>>
+    ): MealsResponse<MealResponse>
 
     class Creator {
         @Inject
