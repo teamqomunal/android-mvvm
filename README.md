@@ -1,5 +1,22 @@
-## Android Research Tech
+## Android MVVM
 - Template repository for doing research on Android Technologies
+
+## API Reference
+- [NEWS API](https://newsapi.org/)
+- [MEAL API](https://www.themealdb.com/api.php)
+
+## Tech Stack
+- Coroutine 
+- Hilt
+
+## Structure
+![Structure](docs/image/structure.png)
+
+## Screen Shot
+|                           NEWS API                           |                           MEAL API                           |
+|:------------------------------------------------------------:|:------------------------------------------------------------:|
+| <img width="200px" height="360px" src="docs/image/ui_1.png"> | <img width="200px" height="360px" src="docs/image/ui_2.png"> |
+
 
 ## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
