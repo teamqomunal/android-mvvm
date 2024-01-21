@@ -28,11 +28,8 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
         return ActivityDetailBinding.inflate(layoutInflater)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
-    override fun initUI() {
+    override fun initUI(savedInstanceState: Bundle?) {
         binding.apply {
 
         }

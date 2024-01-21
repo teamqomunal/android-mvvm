@@ -18,15 +18,16 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     abstract fun setupViewBinding(): VB
 
+    abstract fun initUI(savedInstanceState: Bundle?)
+
     abstract fun initObserver()
-    abstract fun initUI()
 
     protected val binding by lazy { setupViewBinding() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        initUI()
+        initUI(savedInstanceState)
         initObserver()
     }
 

@@ -1,11 +1,13 @@
 package com.qomunal.opensource.androidresearch.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import com.qomunal.opensource.androidresearch.R
 import com.qomunal.opensource.androidresearch.common.base.BaseActivity
 import com.qomunal.opensource.androidresearch.databinding.ActivityMainBinding
-import com.qomunal.opensource.androidresearch.domain.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,66 +22,47 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         return ActivityMainBinding.inflate(layoutInflater)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initUI(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            viewModel.getNewsArticle()
-            viewModel.getMeals()
+            replaceFragment(MainFragment.newInstance(MainMenuType.NEWS))
         }
-    }
 
-    override fun initUI() {
         binding.apply {
+            bottomNav.setOnItemSelectedListener {
+                when (it.itemId) {
+
+                    R.id.nv_news -> {
+                        replaceFragment(MainFragment.newInstance(MainMenuType.NEWS))
+                        return@setOnItemSelectedListener true
+                    }
+
+                    R.id.nv_meal -> {
+                        replaceFragment(MainFragment.newInstance(MainMenuType.MEAL))
+                        return@setOnItemSelectedListener true
+                    }
+
+                }
+                return@setOnItemSelectedListener false
+            }
 
         }
     }
 
     override fun initObserver() {
         viewModel.apply {
-            newsArticlesState.observe(this@MainActivity) {
-                when (it) {
-                    is Resource.Error -> {
-                        Log.d("MainActivity", "Error")
-                    }
 
-                    is Resource.Loading -> {
-                        Log.d("MainActivity", "Loading")
-                    }
+        }
+    }
 
-                    is Resource.Success -> {
-                        Log.d("MainActivity", "Success")
-                        Log.d("MainActivity", it.data.toString())
-                    }
-                }
-            }
-
-            mealState.observe(this@MainActivity) {
-                when (it) {
-                    is Resource.Error -> {
-                        Log.d("MainActivity", "Error")
-                    }
-
-                    is Resource.Loading -> {
-                        Log.d("MainActivity", "Loading")
-                    }
-
-                    is Resource.Success -> {
-                        Log.d("MainActivity", "Success")
-                        Log.d("MainActivity", it.data.toString())
-
-                        it.data?.forEach { meal ->
-
-                            Log.d("Meal Name", meal.strMeal)
-
-                            meal.strIngredient.forEach { ingredient ->
-                                Log.d("Meal Ingredient", ingredient)
-                            }
-
-                            Log.d("Meal Space", "------------------------------")
-                        }
-                    }
-                }
-            }
+    private fun replaceFragment(fragment: Fragment) {
+        val backStateName: String = fragment::class.java.name
+        val manager: FragmentManager = supportFragmentManager
+        val fragmentPopped: Boolean = manager.popBackStackImmediate(backStateName, 0)
+        if (!fragmentPopped) { //fragment not in back stack, create it.
+            val ft: FragmentTransaction = manager.beginTransaction()
+            ft.replace(binding.fragmentMain.id, fragment)
+            ft.addToBackStack(backStateName)
+            ft.commit()
         }
     }
 
